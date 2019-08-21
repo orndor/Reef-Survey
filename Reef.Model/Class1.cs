@@ -23,7 +23,8 @@ namespace Reef.Model
         public string RegionName { get; set; }
         public string SubRegionName { get; set; }
         public string StudyArea { get; set; }
-        public (double, double) RegionCoordinates { get; set; }
+        public double Longitude { get; set; }
+        public double Latitude { get; set; }
         public string Management { get; set; }
 
     }
@@ -41,7 +42,7 @@ namespace Reef.Model
 
     public class Schools
     {
-        public int IndividualFishID { get; set; }
+        public int SchoolsID { get; set; }
         public string CommonName { get; set; }
         public double FishLength { get; set; }
         public double FishCount { get; set; }
