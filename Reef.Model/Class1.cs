@@ -36,13 +36,13 @@ namespace Reef.Model
         public string ScientificName { get; set; }
         public string CommonName { get; set; }
         public string Trophic { get; set; }
-        public int SurveyID { get; set; }
-        public string SchoolID { get; set; }
+        public int SurveyId { get; set; }
+        public string SchoolsId { get; set; }
     }
 
     public class Schools
     {
-        public int SchoolsID { get; set; }
+        public int SchoolsId { get; set; }
         public string CommonName { get; set; }
         public double FishLength { get; set; }
         public double FishCount { get; set; }
