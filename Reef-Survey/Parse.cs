@@ -31,14 +31,21 @@ namespace Reef_Survey
         {
             Path = path;
         }
-        /*(List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>)*/ public void Csv()
+        /*(List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>)*/
+        public void Csv()
         {
-            string data = File.ReadAllText(Path);
-            data.Trim();
-            string[] dataArray = data.Split(",");
-            
-            for (int i = 0; i < 1000; i += 17)
+            bool arb = false;
+            foreach (string line in File.ReadLines(Path))
             {
+                int i = 0;
+                if (arb == false)
+                {
+                    arb = true;
+                    continue;
+                }
+
+                line.Trim();
+                var dataArray = line.Split(",");
                 try
                 {
                     region.Add(dataArray[i]);
@@ -58,28 +65,59 @@ namespace Reef_Survey
                     trophic.Add(dataArray[i + 14]);
                     fishLength.Add(dataArray[i + 15]);
                     fishCount.Add(dataArray[i + 16]);
-
-
                 }
+
                 catch (IndexOutOfRangeException)
                 {
-                    Console.WriteLine("Completed parse.");
-                    /*return (region, subRegion, studyArea, surveyYear,
-                    batchCode, surveyIndex, surveyDate, latitude, longitude,
-                    management, structureType, family, scientificName, commonName,
-                    trophic, fishLength, fishCount);*/
+                    break;
                 }
             }
-            /*return (region, subRegion, studyArea, surveyYear,
-                    batchCode, surveyIndex, surveyDate, latitude, longitude,
-                    management, structureType, family, scientificName, commonName,
-                    trophic, fishLength, fishCount);*/
         }
+        /* string[] dataArray = data.Split(",");
 
-        public void Print<T>(List<T> list)
+         for (int i = 0; i < 1000; i += 17)
+         {
+             try
+             {
+                 region.Add(dataArray[i]);
+                 subRegion.Add(dataArray[i + 1]);
+                 studyArea.Add(dataArray[i + 2]);
+                 surveyYear.Add(dataArray[i + 3]);
+                 batchCode.Add(dataArray[i + 4]);
+                 surveyIndex.Add(dataArray[i + 5]);
+                 surveyDate.Add(dataArray[i + 6]);
+                 latitude.Add(dataArray[i + 7]);
+                 longitude.Add(dataArray[i + 8]);
+                 management.Add(dataArray[i + 9]);
+                 structureType.Add(dataArray[i + 10]);
+                 family.Add(dataArray[i + 11]);
+                 scientificName.Add(dataArray[i + 12]);
+                 commonName.Add(dataArray[i + 13]);
+                 trophic.Add(dataArray[i + 14]);
+                 fishLength.Add(dataArray[i + 15]);
+                 fishCount.Add(dataArray[i + 16]);
+
+
+             }
+             catch (IndexOutOfRangeException)
+             {
+                 Console.WriteLine("Completed parse.");
+                 /*return (region, subRegion, studyArea, surveyYear,
+                 batchCode, surveyIndex, surveyDate, latitude, longitude,
+                 management, structureType, family, scientificName, commonName,
+                 trophic, fishLength, fishCount);*/
+        //}
+        //}
+        /*return (region, subRegion, studyArea, surveyYear,
+                batchCode, surveyIndex, surveyDate, latitude, longitude,
+                management, structureType, family, scientificName, commonName,
+                trophic, fishLength, fishCount);*/
+        //}
+
+        public static void Print<T>(List<T> list)
         {
             int i = 0;
-            foreach(T item in list)
+            foreach (T item in list)
             {
                 i++;
                 Console.WriteLine($" {i}: {item}");
