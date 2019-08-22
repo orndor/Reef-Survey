@@ -57,7 +57,7 @@ namespace Reef.Model
         public double FishLength { get; set; }
         public double FishCount { get; set; }
 
-        public List<Fish> Fishs { get; set; }
+        //public List<Fish> Fishs { get; set; }
 
         public int FishId { get; set; }
         public Fish Fish { get; set; }
@@ -73,7 +73,7 @@ namespace Reef.Model
         public int SurveyIndex { get; set; }
         public int FishCount { get; set; }
 
-        public List<Fish> Fishs { get; set; }
+        //public List<Fish> Fishs { get; set; }
 
         public int LocationId { get; set; }
         public Location Location { get; set; }
