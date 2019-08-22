@@ -78,8 +78,8 @@ namespace Reef.Model
         public int LocationId { get; set; }
         public Location Location { get; set; }
 
-        public int FishId { get; set; }
-        public Fish Fish { get; set; }
+        //public int FishId { get; set; }
+        //public Fish Fish { get; set; }
 
     }
 }
