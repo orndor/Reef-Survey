@@ -40,7 +40,7 @@ namespace Reef.Model
         public string Trophic { get; set; }
 
         //public List<Schools> School { get; set; }
-        public List<Survey> Surveys { get; set; }
+        //public List<Survey> Surveys { get; set; }
 
         public int SurveyId { get; set; }
         public Survey Survey { get; set; }
