@@ -9,7 +9,7 @@ using Reef.Model;
 namespace Reef.Model.Migrations
 {
     [DbContext(typeof(ReefSurvey))]
-    [Migration("20190821235758_InitialCreate")]
+    [Migration("20190822140021_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,8 +30,6 @@ namespace Reef.Model.Migrations
 
                     b.Property<string>("FamilyName");
 
-                    b.Property<string>("SchoolsId");
-
                     b.Property<string>("ScientificName");
 
                     b.Property<int>("SurveyId");
@@ -39,6 +37,8 @@ namespace Reef.Model.Migrations
                     b.Property<string>("Trophic");
 
                     b.HasKey("FishId");
+
+                    b.HasIndex("SurveyId");
 
                     b.ToTable("Fish");
                 });
@@ -82,6 +82,8 @@ namespace Reef.Model.Migrations
 
                     b.HasKey("SchoolsId");
 
+                    b.HasIndex("FishId");
+
                     b.ToTable("Schools");
                 });
 
@@ -95,8 +97,6 @@ namespace Reef.Model.Migrations
 
                     b.Property<int>("FishCount");
 
-                    b.Property<int>("FishId");
-
                     b.Property<int>("LocationId");
 
                     b.Property<int>("SurveyIndex");
@@ -105,7 +105,33 @@ namespace Reef.Model.Migrations
 
                     b.HasKey("SurveyId");
 
+                    b.HasIndex("LocationId");
+
                     b.ToTable("Surveys");
+                });
+
+            modelBuilder.Entity("Reef.Model.Fish", b =>
+                {
+                    b.HasOne("Reef.Model.Survey", "Survey")
+                        .WithMany()
+                        .HasForeignKey("SurveyId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Reef.Model.Schools", b =>
+                {
+                    b.HasOne("Reef.Model.Fish", "Fish")
+                        .WithMany()
+                        .HasForeignKey("FishId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Reef.Model.Survey", b =>
+                {
+                    b.HasOne("Reef.Model.Location", "Location")
+                        .WithMany("Surveys")
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
