@@ -9,7 +9,7 @@ using Reef.Model;
 namespace Reef.Model.Migrations
 {
     [DbContext(typeof(ReefSurvey))]
-    [Migration("20190821154756_InitialCreate")]
+    [Migration("20190821235758_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,11 +30,11 @@ namespace Reef.Model.Migrations
 
                     b.Property<string>("FamilyName");
 
-                    b.Property<string>("SchoolID");
+                    b.Property<string>("SchoolsId");
 
                     b.Property<string>("ScientificName");
 
-                    b.Property<int>("SurveyID");
+                    b.Property<int>("SurveyId");
 
                     b.Property<string>("Trophic");
 
@@ -68,7 +68,7 @@ namespace Reef.Model.Migrations
 
             modelBuilder.Entity("Reef.Model.Schools", b =>
                 {
-                    b.Property<int>("SchoolsID")
+                    b.Property<int>("SchoolsId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -80,7 +80,7 @@ namespace Reef.Model.Migrations
 
                     b.Property<double>("FishLength");
 
-                    b.HasKey("SchoolsID");
+                    b.HasKey("SchoolsId");
 
                     b.ToTable("Schools");
                 });

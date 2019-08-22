@@ -17,8 +17,8 @@ namespace Reef.Model.Migrations
                     ScientificName = table.Column<string>(nullable: true),
                     CommonName = table.Column<string>(nullable: true),
                     Trophic = table.Column<string>(nullable: true),
-                    SurveyID = table.Column<int>(nullable: false),
-                    SchoolID = table.Column<string>(nullable: true)
+                    SurveyId = table.Column<int>(nullable: false),
+                    SchoolsId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -47,7 +47,7 @@ namespace Reef.Model.Migrations
                 name: "Schools",
                 columns: table => new
                 {
-                    SchoolsID = table.Column<int>(nullable: false)
+                    SchoolsId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CommonName = table.Column<string>(nullable: true),
                     FishLength = table.Column<double>(nullable: false),
@@ -56,7 +56,7 @@ namespace Reef.Model.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Schools", x => x.SchoolsID);
+                    table.PrimaryKey("PK_Schools", x => x.SchoolsId);
                 });
 
             migrationBuilder.CreateTable(

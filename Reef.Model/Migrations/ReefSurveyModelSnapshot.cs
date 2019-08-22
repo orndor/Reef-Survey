@@ -28,11 +28,11 @@ namespace Reef.Model.Migrations
 
                     b.Property<string>("FamilyName");
 
-                    b.Property<string>("SchoolID");
+                    b.Property<string>("SchoolsId");
 
                     b.Property<string>("ScientificName");
 
-                    b.Property<int>("SurveyID");
+                    b.Property<int>("SurveyId");
 
                     b.Property<string>("Trophic");
 
@@ -66,7 +66,7 @@ namespace Reef.Model.Migrations
 
             modelBuilder.Entity("Reef.Model.Schools", b =>
                 {
-                    b.Property<int>("SchoolsID")
+                    b.Property<int>("SchoolsId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -78,7 +78,7 @@ namespace Reef.Model.Migrations
 
                     b.Property<double>("FishLength");
 
-                    b.HasKey("SchoolsID");
+                    b.HasKey("SchoolsId");
 
                     b.ToTable("Schools");
                 });
