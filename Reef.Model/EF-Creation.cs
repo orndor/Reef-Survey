@@ -37,10 +37,12 @@ namespace Reef.Model
         public string CommonName { get; set; }
         public string Trophic { get; set; }
 
-        public Survey Survey { get; set; }
         public int SurveyId { get; set; }
-        public Schools Schools { get; set; }
+        public Survey Survey { get; set; }
+
         public int SchoolsId { get; set; }
+        public Schools Schools { get; set; }
+
     }
 
     public class Schools
@@ -50,8 +52,9 @@ namespace Reef.Model
         public double FishLength { get; set; }
         public double FishCount { get; set; }
 
-        public Fish Fish { get; set; }
         public int FishId { get; set; }
+        public Fish Fish { get; set; }
+
 
     }
 
@@ -62,10 +65,12 @@ namespace Reef.Model
         public int BatchCode { get; set; }
         public int SurveyIndex { get; set; }
         public int FishCount { get; set; }
-       
-        public Location Location { get; set; }
+
         public int LocationId { get; set; }
-        public Fish Fish { get; set; }
+        public Location Location { get; set; }
+
         public int FishId { get; set; }
+        public Fish Fish { get; set; }
+
     }
 }
