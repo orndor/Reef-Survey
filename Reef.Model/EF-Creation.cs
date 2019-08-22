@@ -45,8 +45,8 @@ namespace Reef.Model
         public int SurveyId { get; set; }
         public Survey Survey { get; set; }
 
-        public int SchoolsId { get; set; }
-        public Schools Schools { get; set; }
+        //public int SchoolsId { get; set; }
+        //public Schools Schools { get; set; }
 
     }
 
