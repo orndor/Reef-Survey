@@ -7,6 +7,7 @@ namespace Reef_Survey
 {
     class Parse
     {
+
         string Path { get; set; }
 
         public List<string> region = new List<string>();
@@ -31,8 +32,10 @@ namespace Reef_Survey
         {
             Path = path;
         }
-        /*(List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>, List<string>)*/
-        public void Csv()
+
+        
+
+      public void Csv()
         {
             bool arb = false;
             foreach (string line in File.ReadLines(Path))
@@ -46,9 +49,17 @@ namespace Reef_Survey
 
                 line.Trim();
                 var dataArray = line.Split(",");
+                string[] temp = new string[17];
                 try
                 {
-                    region.Add(dataArray[i]);
+                    //substitue db references from these list values
+                    //db.Region.Add(dataArray[i]);
+
+                    using (var db = new Reef_Survey())
+                    {
+                        db.Locations
+                    }
+                        region.Add(dataArray[i]);
                     subRegion.Add(dataArray[i + 1]);
                     studyArea.Add(dataArray[i + 2]);
                     surveyYear.Add(dataArray[i + 3]);
@@ -66,61 +77,11 @@ namespace Reef_Survey
                     fishLength.Add(dataArray[i + 15]);
                     fishCount.Add(dataArray[i + 16]);
                 }
-
+                
                 catch (IndexOutOfRangeException)
                 {
                     break;
                 }
-            }
-        }
-        /* string[] dataArray = data.Split(",");
-
-         for (int i = 0; i < 1000; i += 17)
-         {
-             try
-             {
-                 region.Add(dataArray[i]);
-                 subRegion.Add(dataArray[i + 1]);
-                 studyArea.Add(dataArray[i + 2]);
-                 surveyYear.Add(dataArray[i + 3]);
-                 batchCode.Add(dataArray[i + 4]);
-                 surveyIndex.Add(dataArray[i + 5]);
-                 surveyDate.Add(dataArray[i + 6]);
-                 latitude.Add(dataArray[i + 7]);
-                 longitude.Add(dataArray[i + 8]);
-                 management.Add(dataArray[i + 9]);
-                 structureType.Add(dataArray[i + 10]);
-                 family.Add(dataArray[i + 11]);
-                 scientificName.Add(dataArray[i + 12]);
-                 commonName.Add(dataArray[i + 13]);
-                 trophic.Add(dataArray[i + 14]);
-                 fishLength.Add(dataArray[i + 15]);
-                 fishCount.Add(dataArray[i + 16]);
-
-
-             }
-             catch (IndexOutOfRangeException)
-             {
-                 Console.WriteLine("Completed parse.");
-                 /*return (region, subRegion, studyArea, surveyYear,
-                 batchCode, surveyIndex, surveyDate, latitude, longitude,
-                 management, structureType, family, scientificName, commonName,
-                 trophic, fishLength, fishCount);*/
-        //}
-        //}
-        /*return (region, subRegion, studyArea, surveyYear,
-                batchCode, surveyIndex, surveyDate, latitude, longitude,
-                management, structureType, family, scientificName, commonName,
-                trophic, fishLength, fishCount);*/
-        //}
-
-        public static void Print<T>(List<T> list)
-        {
-            int i = 0;
-            foreach (T item in list)
-            {
-                i++;
-                Console.WriteLine($" {i}: {item}");
             }
         }
     }
