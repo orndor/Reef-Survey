@@ -27,7 +27,7 @@ namespace Reef.Model
         public double Latitude { get; set; }
         public string Management { get; set; }
 
-        public List<Survey> Surveys { get; set; }
+        //public List<Survey> Surveys { get; set; }
 
     }
 
@@ -61,8 +61,9 @@ namespace Reef.Model
     public class Survey
     {
         public int SurveyId { get; set; }
-        public int SurveyYear { get; set; }
-        public int BatchCode { get; set; }
+        public string SurveyDate { get; set;  }
+        public string SurveyYear { get; set; }
+        public string BatchCode { get; set; }
         public int SurveyIndex { get; set; }
         public int FishCount { get; set; }
 

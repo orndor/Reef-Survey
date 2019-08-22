@@ -91,15 +91,17 @@ namespace Reef.Model.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BatchCode");
+                    b.Property<string>("BatchCode");
 
                     b.Property<int>("FishCount");
 
                     b.Property<int>("LocationId");
 
+                    b.Property<string>("SurveyDate");
+
                     b.Property<int>("SurveyIndex");
 
-                    b.Property<int>("SurveyYear");
+                    b.Property<string>("SurveyYear");
 
                     b.HasKey("SurveyId");
 

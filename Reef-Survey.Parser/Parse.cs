@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Reef_Survey
 {
-    class Parse
+    public class Parse
     {
 
         string Path { get; set; }
@@ -62,25 +62,22 @@ namespace Reef_Survey
                     using (var db = new ReefSurvey())
                     {
 
+                        var theLocation = new Location { RegionName = dataArray[i], SubRegionName = dataArray[i + 1], StudyArea = dataArray[i + 2], Latitude = Convert.ToDouble(dataArray[i + 7]), Longitude = Convert.ToDouble(dataArray[i + 8]), Management = dataArray[i + 9] };
+                        db.Locations.Add(theLocation);
 
-                        db.Locations.Add(new Location { RegionName = dataArray[i] });
-                        db.Locations.Add(new Location { SubRegionName = dataArray[i + 1] });
-                        db.Locations.Add(new Location { StudyArea = dataArray[i + 2] });
-                        db.Surveys.Add(new Survey { SurveyYear = int.Parse(dataArray[i + 3]) });
-                        db.Surveys.Add(new Survey { BatchCode = int.Parse(dataArray[i + 4]) });
-                        db.Surveys.Add(new Survey { SurveyIndex = int.Parse(dataArray[i + 5]) });
-                        db.Surveys.Add(new Survey { SurveyYear = int.Parse(dataArray[i + 6]) });
-                        db.Locations.Add(new Location { Latitude = Convert.ToDouble(dataArray[i + 7]) });
-                        db.Locations.Add(new Location { Longitude = Convert.ToDouble(dataArray[i + 8]) });
-                        db.Locations.Add(new Location { Management = dataArray[i + 9] });
+
+                        var theSurvey = new Survey { Location = theLocation, SurveyDate = dataArray[i + 3], BatchCode = dataArray[i + 4], SurveyIndex = int.Parse(dataArray[i + 5]), SurveyYear = dataArray[i + 6] };
+                        db.Surveys.Add(theSurvey);
+
+                      
                         //db..Add(dataArray[i + 10]);
-                        db.Fish.Add(new Fish { FamilyName = dataArray[i + 11] });
-                        db.Fish.Add(new Fish { ScientificName = dataArray[i + 12] });
-                        db.Fish.Add(new Fish { CommonName = dataArray[i + 13] });
-                        db.Fish.Add(new Fish { Trophic = dataArray[i + 14] });
-                        db.Schools.Add(new Schools { FishLength = int.Parse(dataArray[i + 15]) });
-                        db.Schools.Add(new Schools { FishCount = int.Parse(dataArray[i + 16]) });
-                    }
+                        var theFish = new Fish { Survey = theSurvey, FamilyName = dataArray[i + 11], ScientificName = dataArray[i + 12], CommonName = dataArray[i + 13], Trophic = dataArray[i + 14] };
+                        db.Fish.Add(theFish);
+
+                        var theSchools = new Schools { Fish = theFish, FishLength = double.Parse(dataArray[i + 15]), FishCount = double.Parse(dataArray[i + 16]) };
+                        db.Schools.Add(theSchools);
+                       
+                        var count = db.SaveChanges();                    }
                 }
 
                 catch (IndexOutOfRangeException)

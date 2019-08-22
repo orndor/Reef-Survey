@@ -9,8 +9,8 @@ using Reef.Model;
 namespace Reef.Model.Migrations
 {
     [DbContext(typeof(ReefSurvey))]
-    [Migration("20190822140021_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20190822153927_initialCreate")]
+    partial class initialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -93,15 +93,17 @@ namespace Reef.Model.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BatchCode");
+                    b.Property<string>("BatchCode");
 
                     b.Property<int>("FishCount");
 
                     b.Property<int>("LocationId");
 
+                    b.Property<string>("SurveyDate");
+
                     b.Property<int>("SurveyIndex");
 
-                    b.Property<int>("SurveyYear");
+                    b.Property<string>("SurveyYear");
 
                     b.HasKey("SurveyId");
 

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Reef.Model.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class initialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -31,8 +31,9 @@ namespace Reef.Model.Migrations
                 {
                     SurveyId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    SurveyYear = table.Column<int>(nullable: false),
-                    BatchCode = table.Column<int>(nullable: false),
+                    SurveyDate = table.Column<string>(nullable: true),
+                    SurveyYear = table.Column<string>(nullable: true),
+                    BatchCode = table.Column<string>(nullable: true),
                     SurveyIndex = table.Column<int>(nullable: false),
                     FishCount = table.Column<int>(nullable: false),
                     LocationId = table.Column<int>(nullable: false)
