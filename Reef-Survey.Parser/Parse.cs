@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Reef.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
+
+using Microsoft.EntityFrameworkCore;
 using System.Text;
 
 namespace Reef_Survey
@@ -55,34 +58,37 @@ namespace Reef_Survey
                     //substitue db references from these list values
                     //db.Region.Add(dataArray[i]);
 
-                    using (var db = new Reef_Survey())
+
+                    using (var db = new ReefSurvey())
                     {
-                        db.Locations
+
+
+                        db.Locations.Add(new Location { RegionName = dataArray[i] });
+                        db.Locations.Add(new Location { SubRegionName = dataArray[i + 1] });
+                        db.Locations.Add(new Location { StudyArea = dataArray[i + 2] });
+                        db.Surveys.Add(new Survey { SurveyYear = int.Parse(dataArray[i + 3]) });
+                        db.Surveys.Add(new Survey { BatchCode = int.Parse(dataArray[i + 4]) });
+                        db.Surveys.Add(new Survey { SurveyIndex = int.Parse(dataArray[i + 5]) });
+                        db.Surveys.Add(new Survey { SurveyYear = int.Parse(dataArray[i + 6]) });
+                        db.Locations.Add(new Location { Latitude = Convert.ToDouble(dataArray[i + 7]) });
+                        db.Locations.Add(new Location { Longitude = Convert.ToDouble(dataArray[i + 8]) });
+                        db.Locations.Add(new Location { Management = dataArray[i + 9] });
+                        //db..Add(dataArray[i + 10]);
+                        db.Fish.Add(new Fish { FamilyName = dataArray[i + 11] });
+                        db.Fish.Add(new Fish { ScientificName = dataArray[i + 12] });
+                        db.Fish.Add(new Fish { CommonName = dataArray[i + 13] });
+                        db.Fish.Add(new Fish { Trophic = dataArray[i + 14] });
+                        db.Schools.Add(new Schools { FishLength = int.Parse(dataArray[i + 15]) });
+                        db.Schools.Add(new Schools { FishCount = int.Parse(dataArray[i + 16]) });
                     }
-                        region.Add(dataArray[i]);
-                    subRegion.Add(dataArray[i + 1]);
-                    studyArea.Add(dataArray[i + 2]);
-                    surveyYear.Add(dataArray[i + 3]);
-                    batchCode.Add(dataArray[i + 4]);
-                    surveyIndex.Add(dataArray[i + 5]);
-                    surveyDate.Add(dataArray[i + 6]);
-                    latitude.Add(dataArray[i + 7]);
-                    longitude.Add(dataArray[i + 8]);
-                    management.Add(dataArray[i + 9]);
-                    structureType.Add(dataArray[i + 10]);
-                    family.Add(dataArray[i + 11]);
-                    scientificName.Add(dataArray[i + 12]);
-                    commonName.Add(dataArray[i + 13]);
-                    trophic.Add(dataArray[i + 14]);
-                    fishLength.Add(dataArray[i + 15]);
-                    fishCount.Add(dataArray[i + 16]);
                 }
-                
+
                 catch (IndexOutOfRangeException)
                 {
                     break;
                 }
             }
         }
+        
     }
 }
