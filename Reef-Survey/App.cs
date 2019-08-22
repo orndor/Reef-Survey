@@ -10,8 +10,6 @@ namespace Reef_Survey
         {
             var parse = new Parse(@"C:\Users\lukep\Desktop\Reef\Reef-Survey\Reef-Survey\external\survey\1-data\Fish Dump.csv");
             parse.Csv();
-            parse.Print(parse.region);
-            parse.Print(parse.fishCount);
         }
     }
 }
