@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
-
+using System.Collections.Generic;
 
 namespace Reef.Model
 {
@@ -36,8 +36,11 @@ namespace Reef.Model
         public string ScientificName { get; set; }
         public string CommonName { get; set; }
         public string Trophic { get; set; }
+
+        public Survey Survey { get; set; }
         public int SurveyId { get; set; }
-        public string SchoolsId { get; set; }
+        public Schools Schools { get; set; }
+        public int SchoolsId { get; set; }
     }
 
     public class Schools
@@ -46,6 +49,8 @@ namespace Reef.Model
         public string CommonName { get; set; }
         public double FishLength { get; set; }
         public double FishCount { get; set; }
+
+        public Fish Fish { get; set; }
         public int FishId { get; set; }
 
     }
@@ -57,7 +62,10 @@ namespace Reef.Model
         public int BatchCode { get; set; }
         public int SurveyIndex { get; set; }
         public int FishCount { get; set; }
+       
+        public Location Location { get; set; }
         public int LocationId { get; set; }
+        public Fish Fish { get; set; }
         public int FishId { get; set; }
     }
 }
