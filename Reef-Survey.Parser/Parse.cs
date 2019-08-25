@@ -1,44 +1,19 @@
 ﻿using Reef.Model;
 using System;
-using System.Collections.Generic;
 using System.IO;
-
-using Microsoft.EntityFrameworkCore;
-using System.Text;
 
 namespace Reef_Survey
 {
     public class Parse
     {
-
         string Path { get; set; }
-
-        public List<string> region = new List<string>();
-        List<string> subRegion = new List<string>();
-        List<string> studyArea = new List<string>();
-        List<string> surveyYear = new List<string>();
-        List<string> batchCode = new List<string>();
-        List<string> surveyIndex = new List<string>();
-        List<string> surveyDate = new List<string>();
-        List<string> latitude = new List<string>();
-        List<string> longitude = new List<string>();
-        List<string> management = new List<string>();
-        List<string> structureType = new List<string>();
-        List<string> family = new List<string>();
-        List<string> scientificName = new List<string>();
-        List<string> commonName = new List<string>();
-        List<string> trophic = new List<string>();
-        List<string> fishLength = new List<string>();
-        public List<string> fishCount = new List<string>();
 
         public Parse(string path)
         {
             Path = path;
         }
 
-        
-
-      public void Csv()
+        public void Csv()
         {
             bool arb = false;
             foreach (string line in File.ReadLines(Path))
@@ -55,10 +30,6 @@ namespace Reef_Survey
                 string[] temp = new string[17];
                 try
                 {
-                    //substitue db references from these list values
-                    //db.Region.Add(dataArray[i]);
-
-
                     using (var db = new ReefSurvey())
                     {
 
@@ -77,15 +48,14 @@ namespace Reef_Survey
                         var theSchools = new Schools { Fish = theFish, FishLength = double.Parse(dataArray[i + 15]), FishCount = double.Parse(dataArray[i + 16]) };
                         db.Schools.Add(theSchools);
                        
-                        var count = db.SaveChanges();                    }
+                        var count = db.SaveChanges();
+                    }
                 }
-
                 catch (IndexOutOfRangeException)
                 {
                     break;
                 }
             }
         }
-        
     }
 }

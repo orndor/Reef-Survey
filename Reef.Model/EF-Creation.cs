@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 
 namespace Reef.Model
 {
@@ -27,8 +25,6 @@ namespace Reef.Model
         public double Latitude { get; set; }
         public string Management { get; set; }
 
-        //public List<Survey> Surveys { get; set; }
-
     }
 
     public class Fish
@@ -41,7 +37,6 @@ namespace Reef.Model
 
         public int SurveyId { get; set; }
         public Survey Survey { get; set; }
-
     }
 
     public class Schools
@@ -54,8 +49,6 @@ namespace Reef.Model
 
         public int FishId { get; set; }
         public Fish Fish { get; set; }
-
-
     }
 
     public class Survey
@@ -67,10 +60,7 @@ namespace Reef.Model
         public int SurveyIndex { get; set; }
         public int FishCount { get; set; }
 
-
         public int LocationId { get; set; }
         public Location Location { get; set; }
-
-
     }
 }

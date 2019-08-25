@@ -129,7 +129,7 @@ namespace Reef.Model.Migrations
             modelBuilder.Entity("Reef.Model.Survey", b =>
                 {
                     b.HasOne("Reef.Model.Location", "Location")
-                        .WithMany("Surveys")
+                        .WithMany()
                         .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

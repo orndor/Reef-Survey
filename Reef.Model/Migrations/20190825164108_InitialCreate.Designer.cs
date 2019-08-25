@@ -9,8 +9,8 @@ using Reef.Model;
 namespace Reef.Model.Migrations
 {
     [DbContext(typeof(ReefSurvey))]
-    [Migration("20190822153927_initialCreate")]
-    partial class initialCreate
+    [Migration("20190825164108_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -131,7 +131,7 @@ namespace Reef.Model.Migrations
             modelBuilder.Entity("Reef.Model.Survey", b =>
                 {
                     b.HasOne("Reef.Model.Location", "Location")
-                        .WithMany("Surveys")
+                        .WithMany()
                         .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
