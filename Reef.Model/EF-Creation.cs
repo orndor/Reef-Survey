@@ -42,7 +42,8 @@ namespace Reef.Model
     public class Schools
     {
         public int SchoolsId { get; set; }
-        public string CommonName { get; set; }
+
+        //public string CommonName { get; set; }
         public double FishLength { get; set; }
         public double FishCount { get; set; }
 
@@ -58,7 +59,8 @@ namespace Reef.Model
         public string SurveyYear { get; set; }
         public string BatchCode { get; set; }
         public int SurveyIndex { get; set; }
-        public int FishCount { get; set; }
+
+        //public int FishCount { get; set; }
 
         public int LocationId { get; set; }
         public Location Location { get; set; }
