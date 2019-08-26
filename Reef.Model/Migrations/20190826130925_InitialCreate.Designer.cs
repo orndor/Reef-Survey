@@ -9,7 +9,7 @@ using Reef.Model;
 namespace Reef.Model.Migrations
 {
     [DbContext(typeof(ReefSurvey))]
-    [Migration("20190825164108_InitialCreate")]
+    [Migration("20190826130925_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

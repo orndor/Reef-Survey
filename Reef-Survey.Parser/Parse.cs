@@ -37,7 +37,7 @@ namespace Reef_Survey
                         db.Locations.Add(theLocation);
 
 
-                        var theSurvey = new Survey { Location = theLocation, SurveyDate = dataArray[i + 3], BatchCode = dataArray[i + 4], SurveyIndex = int.Parse(dataArray[i + 5]), SurveyYear = dataArray[i + 6] };
+                        var theSurvey = new Survey { Location = theLocation, SurveyYear = dataArray[i + 3], BatchCode = dataArray[i + 4], SurveyIndex = int.Parse(dataArray[i + 5]), SurveyDate = dataArray[i + 6] };
                         db.Surveys.Add(theSurvey);
 
                       
